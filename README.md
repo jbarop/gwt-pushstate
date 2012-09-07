@@ -1,6 +1,8 @@
 gwt-pushstate
 =============
 
+[![Build Status](https://buildhive.cloudbees.com/job/jbarop/job/gwt-pushstate/badge/icon)](https://buildhive.cloudbees.com/job/jbarop/job/gwt-pushstate/)
+
 
 Description
 -----------
