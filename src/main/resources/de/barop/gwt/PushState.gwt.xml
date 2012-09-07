@@ -56,6 +56,31 @@
         value="yes" />
     </all>
   </replace-with>
+  <replace-with class="de.barop.gwt.client.HistoryConverterPushState">
+    <when-type-is class="de.barop.gwt.client.HistoryConverter" />
+    <all>
+      <when-property-is
+        name="history.pushStateSupported"
+        value="yes" />
+    </all>
+  </replace-with>
+
+  <!--
+    Configure hash history support.
+  -->
+  <replace-with class="de.barop.gwt.client.HistoryConverterHash">
+    <when-type-is class="de.barop.gwt.client.HistoryConverter" />
+    <all>
+      <when-property-is
+        name="history.pushStateSupported"
+        value="no" />
+    </all>
+  </replace-with>
+
+  <!--
+    Ensures a suitable format of the history token for the current browser.
+  -->
+  <entry-point class='de.barop.gwt.client.HistoryAsserter' />
 
   <!--
     Where the compiler should look for the code.
