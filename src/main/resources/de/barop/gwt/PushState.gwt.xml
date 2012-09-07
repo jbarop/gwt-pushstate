@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+  <inherits name="com.google.gwt.core.Core" />
+  <inherits name="com.google.gwt.user.History" />
+  <inherits name='com.google.gwt.logging.Logging' />
+  <inherits name="com.google.gwt.user.Window" />
+
+  <!--
+    Property indicating HTML5 pushState support.
+  -->
+  <define-property
+    name="history.pushStateSupported"
+    values="yes,no" />
+
+  <!--
+    Enable/Disable HTML5 pushState based on the availability of the Javascript function.
+  -->
+  <property-provider name="history.pushStateSupported">
+    <![CDATA[
+      if (typeof(window.history.pushState) == "function") {
+        return "yes";
+      } else {
+        return "no";
+      }
+    ]]>
+  </property-provider>
+
+  <!--
+    Constrain the pushState property for obvious cases to avoid permutation explosion.
+  -->
+  <set-property
+    name="history.pushStateSupported"
+    value="no">
+    <any>
+      <when-property-is
+        name="user.agent"
+        value="ie6" />
+      <when-property-is
+        name="user.agent"
+        value="ie8" />
+      <when-property-is
+        name="user.agent"
+        value="ie9" />
+    </any>
+  </set-property>
+
+  <!--
+    Configure pushState history support.
+  -->
+  <replace-with class="de.barop.gwt.client.HistoryImplPushState">
+    <when-type-is class="com.google.gwt.user.client.impl.HistoryImpl" />
+    <all>
+      <when-property-is
+        name="history.pushStateSupported"
+        value="yes" />
+    </all>
+  </replace-with>
+
+  <!--
+    Where the compiler should look for the code.
+  -->
+  <source path='client' />
+
+</module>
