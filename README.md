@@ -9,3 +9,12 @@ Description
 
 gwt-pushstate implements easy to use HTML5 pushState support for GWT projects.
 
+
+TODOS
+-----
+
+1. Samples
+2. Tests
+3. Documentation
+4. 1.0 Release
+
