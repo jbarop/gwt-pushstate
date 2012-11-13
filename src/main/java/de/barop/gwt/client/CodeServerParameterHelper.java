@@ -13,7 +13,7 @@ import com.google.gwt.user.client.Window;
  * @author <a href="mailto:jb@barop.de">Johannes Barop</a>
  * 
  */
-final class CodeServerParameterHelper {
+public final class CodeServerParameterHelper {
 
   /**
    * Hidden constructor as this class is not meant to be instantiated.

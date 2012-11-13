@@ -64,6 +64,22 @@
         value="yes" />
     </all>
   </replace-with>
+  <replace-with class="de.barop.gwt.client.ui.HyperlinkPushState">
+    <when-type-is class="com.google.gwt.user.client.ui.Hyperlink" />
+    <all>
+      <when-property-is
+        name="history.pushStateSupported"
+        value="yes" />
+    </all>
+  </replace-with>
+  <replace-with class="de.barop.gwt.client.ui.InlineHyperlinkPushState">
+    <when-type-is class="com.google.gwt.user.client.ui.InlineHyperlink" />
+    <all>
+      <when-property-is
+        name="history.pushStateSupported"
+        value="yes" />
+    </all>
+  </replace-with>
 
   <!--
     Configure hash history support.
