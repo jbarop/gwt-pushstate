@@ -42,7 +42,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
-    <gwt.version>2.4.0</gwt.version>
+    <gwt.version>2.5.0</gwt.version>
   </properties>
 
 
@@ -80,6 +80,110 @@
       </plugin>
     </plugins>
   </build>
+
+
+  <profiles>
+    <profile>
+      <id>examples</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.google.gwt.inject</groupId>
+          <artifactId>gin</artifactId>
+          <version>1.5.0</version>
+          <exclusions>
+            <exclusion>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-servlet</artifactId>
+            </exclusion>
+          </exclusions>
+        </dependency>
+        <dependency>
+          <groupId>com.gwtplatform</groupId>
+          <artifactId>gwtp-all</artifactId>
+          <version>0.7</version>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+              <execution>
+                <id>add-source-example</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>${basedir}/src/examples/java</source>
+                  </sources>
+                </configuration>
+              </execution>
+              <execution>
+                <id>add-resource-example-resources</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>add-resource</goal>
+                </goals>
+                <configuration>
+                  <resources>
+                    <resource>
+                      <directory>${basedir}/src/examples/resources</directory>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+              <execution>
+                <id>add-source-generated-apt</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>${project.build.directory}/generated-sources/annotations</source>
+                  </sources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>gwt-maven-plugin</artifactId>
+            <version>${gwt.version}</version>
+            <configuration>
+              <!-- <runTarget>/</runTarget> -->
+              <logLevel>INFO</logLevel>
+              <inplace>false</inplace>
+              <style>DETAILED</style>
+              <optimizationLevel>0</optimizationLevel>
+              <draftCompile>true</draftCompile>
+              <enableAssertions>true</enableAssertions>
+              <disableCastChecking>false</disableCastChecking>
+              <disableClassMetadata>false</disableClassMetadata>
+              <enableClosureCompiler>false</enableClosureCompiler>
+              <fragmentCount>-1</fragmentCount>
+              <disableRunAsync>true</disableRunAsync>
+              <compileReport>false</compileReport>
+              <soycDetailed>false</soycDetailed>
+              <localWorkers>2</localWorkers>
+              <extraJvmArgs>-Xms512m -Xmx1g -XX:MaxPermSize=256m</extraJvmArgs>
+              <copyWebapp>true</copyWebapp>
+              <runTarget>Gwtphplacesample.html</runTarget>
+              <debugSuspend>false</debugSuspend>
+              <warSourceDirectory>${basedir}/src/examples/webapp</warSourceDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 
 </project>
