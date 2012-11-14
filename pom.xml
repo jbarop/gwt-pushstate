@@ -105,6 +105,11 @@
           <artifactId>gwtp-all</artifactId>
           <version>0.7</version>
         </dependency>
+        <dependency>
+          <groupId>org.tuckey</groupId>
+          <artifactId>urlrewritefilter</artifactId>
+          <version>4.0.4</version>
+        </dependency>
       </dependencies>
       <build>
         <plugins>

@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
 
+  <!--
+    Configure Tuckey which will be used for rewriting URLs.
+    See urlrewrite.xml for its configuration.
+  -->
+  <filter>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+
   <filter>
     <filter-name>guiceFilter</filter-name>
     <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>

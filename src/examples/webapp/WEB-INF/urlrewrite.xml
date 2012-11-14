@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+
+  <rule enabled="true">
+    <name>
+      GWT Rewrite
+    </name>
+    <note>
+      This rule will rewrite GWT URLs to the GWT application. The path is interpreted by the GWT
+      application as history token.
+    </note>
+    <from>^(?!/Gwtphplacesample.html)(?!/gwtphplacesample/.*)(?!/dispatch/.*)(.*)$</from>
+    <to last="true">
+      /Gwtphplacesample.html
+    </to>
+  </rule>
+
+</urlrewrite>
