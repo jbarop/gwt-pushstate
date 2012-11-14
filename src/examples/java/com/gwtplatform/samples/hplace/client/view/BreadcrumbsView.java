@@ -30,6 +30,8 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.samples.hplace.client.presenter.BreadcrumbsPresenter;
 import com.gwtplatform.samples.hplace.client.presenter.BreadcrumbsPresenter.MyView;
 
+import de.barop.gwt.client.ui.InlineHyperlinkPushState;
+
 /**
  * This is the top-level view of the application. Every time another presenter
  * wants to reveal itself, {@link BreadcrumbPresenterView} will add its content
@@ -71,7 +73,7 @@ public class BreadcrumbsView extends ViewImpl implements MyView {
       if (i > 0) {
         breadcrumbs.add(new InlineLabel(" > "));
       }
-      breadcrumbs.add(new InlineHyperlink("Loading title...",
+      breadcrumbs.add(new InlineHyperlinkPushState("Loading title...",
           placeManager.buildRelativeHistoryToken(i + 1)));
     }
   }

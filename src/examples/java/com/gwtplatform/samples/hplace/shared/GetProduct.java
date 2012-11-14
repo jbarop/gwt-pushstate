@@ -19,6 +19,7 @@ package com.gwtplatform.samples.hplace.shared;
 import com.gwtplatform.dispatch.annotation.GenDispatch;
 import com.gwtplatform.dispatch.annotation.In;
 import com.gwtplatform.dispatch.annotation.Out;
+import com.gwtplatform.dispatch.shared.Action;
 
 /**
  * This classes uses GWTP annotation processors
@@ -27,7 +28,7 @@ import com.gwtplatform.dispatch.annotation.Out;
  *
  * @author Philippe Beaudoin
  */
-@GenDispatch(isSecure = false)
+@GenDispatch(isSecure = false, serviceName = "/" + Action.DEFAULT_SERVICE_NAME + "GetProduct")
 public class GetProduct {
 
   @In(1)

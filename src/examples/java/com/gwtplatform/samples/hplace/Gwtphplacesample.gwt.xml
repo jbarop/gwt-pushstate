@@ -6,6 +6,7 @@
   <inherits name='com.google.gwt.user.User'/>
   <inherits name="com.google.gwt.uibinder.UiBinder" />
   <inherits name="com.google.gwt.inject.Inject" />
+  <inherits name="de.barop.gwt.PushState" />
   
   <inherits name='com.gwtplatform.dispatch.Dispatch' />
   <inherits name="com.gwtplatform.mvp.Mvp" />

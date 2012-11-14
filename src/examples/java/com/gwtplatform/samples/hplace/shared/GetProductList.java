@@ -19,6 +19,7 @@ package com.gwtplatform.samples.hplace.shared;
 import com.gwtplatform.dispatch.annotation.GenDispatch;
 import com.gwtplatform.dispatch.annotation.In;
 import com.gwtplatform.dispatch.annotation.Out;
+import com.gwtplatform.dispatch.shared.Action;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ import java.util.ArrayList;
  *
  * @author Philippe Beaudoin
  */
-@GenDispatch(isSecure = false)
+@GenDispatch(isSecure = false, serviceName = "/" + Action.DEFAULT_SERVICE_NAME + "GetProductList")
 public class GetProductList {
   @In(1)
   int flags;

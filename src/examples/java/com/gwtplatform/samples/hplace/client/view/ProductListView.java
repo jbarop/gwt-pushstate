@@ -34,6 +34,8 @@ import com.gwtplatform.samples.hplace.client.presenter.ProductListPresenter.MyVi
 import com.gwtplatform.samples.hplace.client.presenter.ProductPresenter;
 import com.gwtplatform.samples.hplace.shared.Product;
 
+import de.barop.gwt.client.ui.HyperlinkPushState;
+
 import java.util.List;
 
 /**
@@ -81,7 +83,7 @@ public class ProductListView extends ViewImpl implements MyView {
     for (Product product : products) {
       PlaceRequest request = new PlaceRequest(NameTokens.product).with(
           ProductPresenter.TOKEN_ID, Integer.toString(product.getId()));
-      productList.add(new Hyperlink(product.getName(),
+      productList.add(new HyperlinkPushState(product.getName(),
           placeManager.buildRelativeHistoryToken(request)));
     }
   }
