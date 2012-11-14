@@ -2,3 +2,6 @@
 .project
 .settings
 target
+/www-test/
+/war/
+/gwt-unitCache/

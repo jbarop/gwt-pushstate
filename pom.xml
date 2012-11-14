@@ -52,6 +52,18 @@
       <artifactId>gwt-user</artifactId>
       <version>${gwt.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwt.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 
@@ -77,6 +89,25 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <argLine>-Xmx512m</argLine>
+          <additionalClasspathElements>
+            <additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
+            <additionalClasspathElement>${project.build.testSourceDirectory}</additionalClasspathElement>
+          </additionalClasspathElements>
+          <useManifestOnlyJar>false</useManifestOnlyJar>
+          <forkMode>always</forkMode>
+          <systemProperties>
+            <property>
+              <name>gwt.args</name>
+              <value>-out ${basedir}/war</value>
+            </property>
+          </systemProperties>
+        </configuration>
       </plugin>
     </plugins>
   </build>
