@@ -42,8 +42,11 @@ public class HistoryImplPushState extends HistoryImpl {
 
   @Override
   public boolean init() {
-    retrieveHistoryToken(); // initialize HistoryImpl with the current path
-    nativeUpdate(getToken()); // initialize the empty state with the current history token
+    // initialize HistoryImpl with the current path
+    updateHistoryToken(Window.Location.getPath() + Window.Location.getQueryString());
+    // initialize the empty state with the current history token
+    nativeUpdate(getToken());
+    // initialize the popState handler
     initPopStateHandler();
 
     return true;
@@ -66,14 +69,16 @@ public class HistoryImplPushState extends HistoryImpl {
    * Set the current path as GWT History token which can later retrieved with
    * {@link History#getToken()}.
    */
-  private void retrieveHistoryToken() {
-    String token = Window.Location.getPath();
+  private void updateHistoryToken(String path) {
+    String[] split = path.split("\\?");
+    String token = split[0];
     token = (token.length() > 0) ? decodeFragment(token) : "";
     token = (token.startsWith("/")) ? token.substring(1) : token;
 
-    String queryString = CodeServerParameterHelper.remove(Window.Location.getQueryString());
-    if (queryString != null && !queryString.trim().isEmpty() && !queryString.equals("?")) {
-      token += queryString;
+    String queryString = (split.length == 2) ? split[1] : "";
+    queryString = CodeServerParameterHelper.remove(queryString);
+    if (queryString != null && !queryString.trim().isEmpty()) {
+      token += "?" + queryString;
     }
 
     if (LogConfiguration.loggingIsEnabled()) {
@@ -105,7 +110,7 @@ public class HistoryImplPushState extends HistoryImpl {
     if (LogConfiguration.loggingIsEnabled()) {
       LOG.fine("Popped '" + historyToken + "'");
     }
-    retrieveHistoryToken();
+    updateHistoryToken(historyToken);
     fireHistoryChangedImpl(getToken());
   }
 

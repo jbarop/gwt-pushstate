@@ -70,7 +70,6 @@ public final class CodeServerParameterHelper {
      */
     if (!GWT.isProdMode() && GWT.isClient() && queryString != null) {
       StringBuilder builder = new StringBuilder();
-      builder.append("?");
 
       String separator = "";
       for (String keyValue : queryString.split("&")) {
