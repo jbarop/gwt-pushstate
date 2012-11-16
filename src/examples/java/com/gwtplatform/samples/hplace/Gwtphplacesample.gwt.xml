@@ -6,10 +6,10 @@
   <inherits name='com.google.gwt.user.User'/>
   <inherits name="com.google.gwt.uibinder.UiBinder" />
   <inherits name="com.google.gwt.inject.Inject" />
-  <inherits name="de.barop.gwt.PushState" />
-  
+  <inherits name='com.google.gwt.logging.Logging' />
   <inherits name='com.gwtplatform.dispatch.Dispatch' />
   <inherits name="com.gwtplatform.mvp.Mvp" />
+  <inherits name="de.barop.gwt.PushState" />
 
   <!-- Inherit the default GWT style sheet.  You can change       -->
   <!-- the theme of your GWT application by uncommenting          -->
@@ -22,6 +22,26 @@
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.gwtplatform.samples.hplace.client.Gwtphplacesample'/>
+
+  <!-- Configure logging -->
+  <set-property
+    name="gwt.logging.enabled"
+    value="TRUE" />
+  <set-property
+    name="gwt.logging.logLevel"
+    value="FINE" />
+  <set-property
+    name="gwt.logging.consoleHandler"
+    value="ENABLED" />
+  <set-property
+    name="gwt.logging.developmentModeHandler"
+    value="ENABLED" />
+  <set-property
+    name="gwt.logging.systemHandler"
+    value="ENABLED" />
+  <set-property
+    name="gwt.logging.simpleRemoteHandler"
+    value="DISABLED" />
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
