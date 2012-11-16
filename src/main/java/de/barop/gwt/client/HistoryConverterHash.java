@@ -25,7 +25,7 @@ import com.google.gwt.user.client.Window;
  * 
  * <p>
  * Incoming links like <code>http://www.barop.de/impressum</code> are redirected to
- * <code>http://www.barop.de/#/impressum</code>.
+ * <code>http://www.barop.de/#impressum</code>.
  * </p>
  * 
  * @author <a href="mailto:jb@barop.de">Johannes Barop</a>
@@ -48,7 +48,7 @@ public class HistoryConverterHash implements HistoryConverter {
 
     String newUrl = Window.Location.getProtocol() + "//" + Window.Location.getHost() + "/";
     newUrl = CodeServerParameterHelper.append(newUrl);
-    newUrl = newUrl + "#" + path;
+    newUrl = newUrl + "#" + path.substring(1);
 
     if (LogConfiguration.loggingIsEnabled()) {
       LOG.fine("Path is '" + path + "'. Redirecting to '" + newUrl + "'...");

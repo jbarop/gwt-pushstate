@@ -39,7 +39,7 @@ public class HistoryConverterHashGwtTest extends AbstractNoPushStateTest {
   }
 
   public void testConvertHistory() {
-    String path = getPath();
+    String path = getPath().substring(1);
     historyConverter.convertHistoryToken();
     assertEquals("http://" + getHost() + "/" + getQueryString() + "#" + path, getHref());
   }
