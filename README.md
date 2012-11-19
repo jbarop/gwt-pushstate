@@ -41,7 +41,6 @@ The sample can be run from the shell with:
 
 ## TODOS
 
-1. Tests
 1. Documentation
 1. 1.0 Release
 
