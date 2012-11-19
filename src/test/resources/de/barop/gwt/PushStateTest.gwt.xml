@@ -20,7 +20,12 @@
   <inherits name="de.barop.gwt.PushState" />
   <set-property
     name="history.pushStateSupported"
-    value="no" />
+    value="yes" />
+
+  <inherits name="org.timepedia.exporter.Exporter" />
+  <set-property
+    name="export"
+    value="yes" />
 
   <source path="client" />
 
