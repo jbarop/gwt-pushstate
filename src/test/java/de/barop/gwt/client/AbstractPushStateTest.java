@@ -23,6 +23,7 @@ import org.timepedia.exporter.client.ExporterUtil;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.junit.client.GWTTestCase;
+import com.google.gwt.user.client.History;
 
 /**
  * Base class for GWT unit tests with mocked pushState support.
@@ -76,6 +77,11 @@ public abstract class AbstractPushStateTest extends GWTTestCase {
    */
   protected static Stack<State> states;
 
+  /**
+   * The number of the items in {@link #states} at test start.
+   */
+  protected int statesOnTestStart;
+
   @Override
   public String getModuleName() {
     return "de.barop.gwt.PushStateTest";
@@ -88,9 +94,10 @@ public abstract class AbstractPushStateTest extends GWTTestCase {
     if (states == null) {
       ExporterUtil.exportAll();
       states = new Stack<State>();
-    } else {
-      states.clear();
+      GWT.create(History.class);
     }
+
+    statesOnTestStart = states.size();
   }
 
   /**
@@ -98,6 +105,26 @@ public abstract class AbstractPushStateTest extends GWTTestCase {
    */
   protected native void setHash(String hash) /*-{
     $wnd.location.hash = hash;
+  }-*/;
+
+  /**
+   * Pop the previous history state.
+   */
+  protected void popState() {
+    assert states.size() > 1;
+    states.pop(); // go back
+    callOnPopState(states.peek().data); // pop the current state
+  }
+
+  /**
+   * Native JavaScript which calls the onpopstate handler with the given state.
+   */
+  private native void callOnPopState(JavaScriptObject data) /*-{
+    var event = {
+      state : data
+    };
+    
+    $wnd.onpopstate(event);
   }-*/;
 
   /**
