@@ -41,14 +41,14 @@ public class InlineHyperlinkPushState extends InlineHyperlink {
   private String targetHistoryToken;
 
   /**
-   * Calls {@link InlineHyperlink(text, targetHistoryToken)}
+   * Calls {@link InlineHyperlink#InlineHyperlink(String, String)}.
    */
   public InlineHyperlinkPushState(final String text, final String targetHistoryToken) {
     super(text, targetHistoryToken);
   }
 
   /**
-   * No arg constructor, calls {@link InlineHyperlink()}  
+   * No arg constructor, calls {@link InlineHyperlink#InlineHyperlink()}.  
    */
   public InlineHyperlinkPushState() {
   }
