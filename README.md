@@ -71,8 +71,9 @@ Transparent fallback to URLs with hashes for browsers without pushState support.
 
 ## Sample
 
+Check it out at [gwt-pushstate-examples.appspot.com](http://gwt-pushstate-examples.appspot.com).
 
-There is a sample application based on GWTP-0.7's [gwtp-sample-hplace](https://github.com/ArcBees/GWTP/tree/391aaa1cfdee94564ab1a6438b482054e076a84c/gwtp-samples/gwtp-sample-hplace). Only a few changes where needed to get work nicely. These are documented as [commit here](https://github.com/jbarop/gwt-pushstate/commit/a3d278b2fae71adc4ea7fb22c5eb121ada36b644).
+The sample application is based on GWTP-0.7's [gwtp-sample-hplace](https://github.com/ArcBees/GWTP/tree/391aaa1cfdee94564ab1a6438b482054e076a84c/gwtp-samples/gwtp-sample-hplace). Only a few changes where needed to get it work nicely. These are documented as [commit here](https://github.com/jbarop/gwt-pushstate/commit/a3d278b2fae71adc4ea7fb22c5eb121ada36b644).
 
 The sources are located in ``src/examples`` however the sample is deactivated by default. You can activate it by specifying the ``examples`` maven profile.
 
