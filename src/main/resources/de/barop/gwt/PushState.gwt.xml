@@ -19,7 +19,6 @@
 
   <inherits name="com.google.gwt.core.Core" />
   <inherits name="com.google.gwt.user.History" />
-  <inherits name='com.google.gwt.logging.Logging' />
   <inherits name="com.google.gwt.user.Window" />
 
   <!--
