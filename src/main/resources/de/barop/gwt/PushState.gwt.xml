@@ -20,6 +20,7 @@
   <inherits name="com.google.gwt.core.Core" />
   <inherits name="com.google.gwt.user.History" />
   <inherits name="com.google.gwt.user.Window" />
+  <inherits name="com.google.gwt.logging.LoggingDisabled" />
 
   <!--
     Property indicating HTML5 pushState support.
