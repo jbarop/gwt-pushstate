@@ -180,13 +180,6 @@
           </systemProperties>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <configuration>
-          <arguments>-P!examples</arguments>
-        </configuration>
-      </plugin>
     </plugins>
 
 
@@ -196,9 +189,6 @@
   <profiles>
     <profile>
       <id>examples</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <dependencies>
         <dependency>
           <groupId>com.google.gwt.inject</groupId>
