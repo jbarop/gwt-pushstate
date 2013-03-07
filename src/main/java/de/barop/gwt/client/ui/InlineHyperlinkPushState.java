@@ -59,7 +59,8 @@ public class InlineHyperlinkPushState extends InlineHyperlink {
 
     this.targetHistoryToken = targetHistoryToken;
 
-    DOM.setElementProperty(getElement(), "href", CodeServerParameterHelper.append("/" + targetHistoryToken));
+    String href = (targetHistoryToken.startsWith("/")) ? targetHistoryToken : "/" + targetHistoryToken;
+    DOM.setElementProperty(getElement(), "href", CodeServerParameterHelper.append(href));
   }
 
   @Override

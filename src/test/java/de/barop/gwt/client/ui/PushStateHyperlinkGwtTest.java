@@ -36,27 +36,61 @@ public class PushStateHyperlinkGwtTest extends AbstractPushStateTest {
   }
 
   public void testHyperlink() {
-    Hyperlink hyperlink = new HyperlinkPushState("link", "linkToken");
-    assertEquals("linkToken", hyperlink.getTargetHistoryToken());
+    // Given
+    String text = "a link";
+    String historyToken = "historyToken";
 
-    String[] linkHref = ((Element) hyperlink.getElement().getChild(0)).getAttribute("href").split("\\?");
-    String path = linkHref[0];
-    String queryString = linkHref[1];
+    // When
+    Hyperlink noSlashHyperlink = new HyperlinkPushState(text, historyToken);
+    Hyperlink slashHyperlinkSlash = new HyperlinkPushState(text, "/" + historyToken);
 
-    assertEquals("/linkToken", path);
-    assertTrue(queryString.matches("gwt\\.codesvr=[^&]*"));
+    // Then
+    String[] noSlashLinkHref = ((Element) noSlashHyperlink.getElement().getChild(0)).getAttribute(
+        "href").split("\\?");
+    String noSlashPath = noSlashLinkHref[0];
+    String noSlashQueryString = noSlashLinkHref[1];
+
+    String[] slashLinkHref = ((Element) slashHyperlinkSlash.getElement().getChild(0)).getAttribute(
+        "href").split("\\?");
+    String slashPath = slashLinkHref[0];
+    String slashQueryString = slashLinkHref[1];
+
+    assertEquals(historyToken, noSlashHyperlink.getTargetHistoryToken());
+    assertEquals("/" + historyToken, noSlashPath);
+    assertTrue(noSlashQueryString.matches("gwt\\.codesvr=[^&]*"));
+
+    assertEquals("/" + historyToken, slashHyperlinkSlash.getTargetHistoryToken());
+    assertEquals("/" + historyToken, slashPath);
+    assertTrue(slashQueryString.matches("gwt\\.codesvr=[^&]*"));
   }
 
   public void testInlineHyperlink() {
-    Hyperlink hyperlink = new InlineHyperlinkPushState("link", "linkToken");
-    assertEquals("linkToken", hyperlink.getTargetHistoryToken());
+    // Given
+    String text = "a link";
+    String historyToken = "historyToken";
 
-    String[] linkHref = ((Element) hyperlink.getElement()).getAttribute("href").split("\\?");
-    String path = linkHref[0];
-    String queryString = linkHref[1];
+    // When
+    Hyperlink noSlashHyperlink = new InlineHyperlinkPushState(text, historyToken);
+    Hyperlink slashHyperlinkSlash = new InlineHyperlinkPushState(text, "/" + historyToken);
 
-    assertEquals("/linkToken", path);
-    assertTrue(queryString.matches("gwt\\.codesvr=[^&]*"));
+    // Then
+    String[] noSlashLinkHref = ((Element) noSlashHyperlink.getElement()).getAttribute("href").split(
+        "\\?");
+    String noSlashPath = noSlashLinkHref[0];
+    String noSlashQueryString = noSlashLinkHref[1];
+
+    String[] slashLinkHref = ((Element) slashHyperlinkSlash.getElement()).getAttribute("href").split(
+        "\\?");
+    String slashPath = slashLinkHref[0];
+    String slashQueryString = slashLinkHref[1];
+
+    assertEquals(historyToken, noSlashHyperlink.getTargetHistoryToken());
+    assertEquals("/" + historyToken, noSlashPath);
+    assertTrue(noSlashQueryString.matches("gwt\\.codesvr=[^&]*"));
+
+    assertEquals("/" + historyToken, slashHyperlinkSlash.getTargetHistoryToken());
+    assertEquals("/" + historyToken, slashPath);
+    assertTrue(slashQueryString.matches("gwt\\.codesvr=[^&]*"));
   }
 
 }

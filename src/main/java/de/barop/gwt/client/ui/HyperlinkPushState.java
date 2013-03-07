@@ -61,8 +61,9 @@ public class HyperlinkPushState extends Hyperlink {
 
     this.targetHistoryToken = targetHistoryToken;
 
+    String href = (targetHistoryToken.startsWith("/")) ? targetHistoryToken : "/" + targetHistoryToken;
     DOM.setElementProperty((Element) getElement().getChild(0), "href",
-        CodeServerParameterHelper.append("/" + targetHistoryToken));
+        CodeServerParameterHelper.append(href));
   }
 
   @Override
