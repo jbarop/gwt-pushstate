@@ -49,7 +49,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
-    <gwt.version>2.5.0</gwt.version>
+    <gwt.version>2.5.1</gwt.version>
   </properties>
 
 
