@@ -5,3 +5,5 @@ target
 /www-test/
 /war/
 /gwt-unitCache/
+.idea
+*.iml
