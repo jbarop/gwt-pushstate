@@ -36,7 +36,7 @@ public class HistoryImplPushStateGwtTest extends AbstractPushStateTest {
   }
 
   public void testInit() {
-    assertEquals(1, states.size());
+    assertEquals(statesOnTestStart, states.size());
     assertEquals(startPath, states.peek().url);
     // remove the query string with the codeserver
     String expectedHistoryToken = states.peek().url.substring(1).split("\\?")[0];
