@@ -17,7 +17,6 @@ package de.barop.gwt.client;
 
 import static com.google.gwt.user.client.Window.Location.getQueryString;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 
@@ -37,8 +36,7 @@ public class HistoryImplPushStateGwtTest extends AbstractPushStateTest {
   }
 
   public void testInit() {
-    GWT.create(History.class);
-    assertEquals(1, states.size());
+    assertEquals(statesOnTestStart, states.size());
     assertEquals(startPath, states.peek().url);
     // remove the query string with the codeserver
     String expectedHistoryToken = states.peek().url.substring(1).split("\\?")[0];

@@ -98,7 +98,7 @@ public class HistoryImplPushState extends HistoryImpl {
         that.@de.barop.gwt.client.HistoryImplPushState::onPopState(Ljava/lang/String;)(e.state.historyToken);
       }
       if (oldHandler) {
-        oldHandler();
+        oldHandler(e);
       }
     });
   }-*/;
